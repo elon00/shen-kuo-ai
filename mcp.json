@@ -1,0 +1,55 @@
+{
+  "mcpServers": {
+    "shen-kuo-ai": {
+      "command": "cargo",
+      "args": [
+        "run",
+        "--release",
+        "--quiet"
+      ],
+      "env": {
+        "RUST_LOG": "info",
+        "TITAN_PROTOCOL": "SHENKUO",
+        "TARGET_CHAIN": "Solana",
+        "FIPS_203_LEVEL": "ML-KEM-768",
+        "FIPS_204_LEVEL": "ML-DSA-65"
+      },
+      "tools": [
+        {
+          "name": "calculate_magnetic_declination",
+          "description": "Solves difference between magnetic north and true astronomical geographic north",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "latitude": {
+                "type": "number"
+              },
+              "longitude": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "latitude",
+              "longitude"
+            ]
+          }
+        },
+        {
+          "name": "model_marine_sediment_uplift",
+          "description": "Computes millennial sedimentary rock deposition and coastal erosion dynamics",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "sediment_depth_m": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "sediment_depth_m"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
